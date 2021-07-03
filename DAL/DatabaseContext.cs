@@ -12,6 +12,7 @@ namespace DAL
     public class DatabaseContext : DbContext
     {
         public DatabaseContext() { }
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
 
@@ -43,14 +44,6 @@ namespace DAL
                 command.CommandText = "usp_getproduct";
                 command.CommandType = CommandType.StoredProcedure;
                 var parameter = new SqlParameter("ProductId", ProductId);
-
-                //for output parameter
-                //var parm = new SqlParameter()
-                //{
-                //    ParameterName = "@ProductId",
-                //    SqlDbType = SqlDbType.Int,
-                //    Direction = ParameterDirection.Output
-                //};
 
                 command.Parameters.Add(parameter);
                 this.Database.OpenConnection();
